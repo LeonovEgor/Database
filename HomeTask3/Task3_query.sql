@@ -17,4 +17,15 @@ INSERT INTO storehouses_products VALUES
 
 SELECT * FROM storehouses_products
 -- ORDER BY value 
-ORDER BY CASE WHEN value = 0 THEN 2147483647 ELSE value END
+ORDER BY CASE WHEN value = 0 THEN 2147483647 ELSE value END;
+
+SELECT 
+storehouse_id, 
+product_id, 
+value,
+value / value AS in_stock
+FROM storehouses_products
+ORDER BY in_stock DESC, value ASC;
+
+SELECT * FROM storehouses_products
+ORDER BY value=0, value

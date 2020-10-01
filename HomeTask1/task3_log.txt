@@ -1,0 +1,3 @@
+PS C:\Program Files\MySQL\MySQL Server 8.0\bin> .\mysqldump -u root -paltair11 --opt --where="1 limit 100" mysql help_keyword > task3_dump.sql
+mysqldump: [Warning] Using a password on the command line interface can be insecure.
+PS C:\Program Files\MySQL\MySQL Server 8.0\bin>
