@@ -1,3 +1,4 @@
+-- 3. (по желанию) Подсчитайте произведение чисел в столбце таблицы.
 
 DROP database if exists sample;
 CREATE  database sample;
