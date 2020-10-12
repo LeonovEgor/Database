@@ -1,0 +1,1 @@
+SELECT AVG((YEAR(CURRENT_DATE) - YEAR(birthday_at))) AS AVG_age FROM shop.users ;
