@@ -1,0 +1,28 @@
+
+-- Создание пользователя shop_read с паролем 123
+CREATE USER shop_read IDENTIFIED WITH sha256_password BY '123';
+
+-- Предоставление пользователю shop_read права на операцию SELECT базы shop
+GRANT USAGE, SELECT ON shop.* TO shop_read;
+
+-- Проверка
+mysql -u shop_read -p123;
+USE shop;
+SELECT * FROM users;
+INSERT INTO users VALUES (DEFAULT, 'Иванов', '2000-05-23', DEFAULT, DEFAULT);
+
+
+
+
+-- Создание пользователя shop с паролем 123
+CREATE USER shop IDENTIFIED WITH sha256_password BY '123';
+
+-- Предоставление пользователю shop права на все операции с базой shop 
+GRANT ALL ON shop.* TO shop;
+GRANT GRANT OPTION ON shop.* TO shop;
+
+-- Проверка
+mysql -u shop -p123;
+USE shop;
+SELECT * FROM users;
+INSERT INTO users VALUES (DEFAULT, 'Кузнецов', '2002-02-23', DEFAULT, DEFAULT);

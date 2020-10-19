@@ -1,0 +1,52 @@
+PS C:\Users\leono> mysql -u root;
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 27
+Server version: 8.0.21 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> CREATE USER shop IDENTIFIED WITH sha256_password BY '123';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> GRANT ALL ON shop.* TO shop;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> GRANT GRANT OPTION ON shop.* TO shop;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> exit;
+Bye
+PS C:\Users\leono> mysql -u shop -p123;
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 28
+Server version: 8.0.21 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> USE shop;
+Database changed
+mysql> SELECT * FROM users;
++----+---------+-------------+---------------------+---------------------+
+| id | name    | birthday_at | created_at          | updated_at          |
++----+---------+-------------+---------------------+---------------------+
+|  2 | Петров  | 2010-08-13  | 2020-10-12 19:05:34 | 2020-10-12 19:05:34 |
+|  3 | Сидоров | 2010-03-01  | 2020-10-12 19:05:34 | 2020-10-12 19:05:34 |
++----+---------+-------------+---------------------+---------------------+
+2 rows in set (0.00 sec)
+
+mysql> INSERT INTO users VALUES (DEFAULT, 'Кузнецов', '2002-02-23', DEFAULT, DEFAULT);
+Query OK, 1 row affected (0.01 sec)
+mysql>
