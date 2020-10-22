@@ -1,0 +1,31 @@
+USE shop;
+
+DELIMITER //
+
+DROP FUNCTION IF EXISTS FIBONACCI //
+CREATE FUNCTION FIBONACCI (num INT)
+RETURNS INT DETERMINISTIC
+BEGIN
+    DECLARE i INT DEFAULT 2;
+    DECLARE v1 INT;
+    DECLARE v2 INT;    
+
+    DROP TEMPORARY TABLE IF EXISTS arr;
+    CREATE TEMPORARY TABLE arr (id INT, value INT);
+    INSERT INTO arr VALUES (0, 0), (1, 1);
+
+    WHILE i <= num DO
+        SELECT value INTO v1 FROM arr WHERE id = i - 1; 
+        SELECT value INTO v2 FROM arr WHERE id = i - 2;
+        
+        INSERT INTO arr VALUES (i, v1 + v2);    
+        SET i = i + 1;
+    END WHILE;
+    
+    SELECT value INTO v1 FROM arr WHERE id = num;
+    RETURN v1;
+END//
+
+DELIMITER ;
+
+SELECT FIBONACCI(10);

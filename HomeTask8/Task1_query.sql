@@ -1,0 +1,3 @@
+USE sample;
+
+SELECT hello();
